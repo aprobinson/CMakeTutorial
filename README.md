@@ -20,7 +20,7 @@ and the system. A description of some of the more advanced cmake
 commands (many of which are found in the file contained in the cmake directory)
 can be found at http://www.cmake.org/cmake/help/v2.8.12/cmake.html. 
 
-//---------------------------------------------------------------------------//
+-------------------------------------------------------------------------------
 
 Typical Workflow:
 
@@ -45,11 +45,11 @@ Typical Workflow:
 8.) If MPI support has been turned on type: mpiexec -n x main
     where x is the number of processes to use
 
-NOTE: After changing configure options and rerunning the configure script
+-NOTE: After changing configure options and rerunning the configure script
       it is often a good idea to type make clean before rebuilding the
       system.
 
-//---------------------------------------------------------------------------//
+-------------------------------------------------------------------------------
 
 Example directory structure for build:
 
