@@ -52,7 +52,7 @@ void Message::changeMessageContents( const std::string& new_message )
 }
 
 // Print method (overridden PrintableObject print method)
-void Message::print( std::ostream &os )
+void Message::print( std::ostream &os ) const
 {
   os << d_sender_name << "->" << d_recipient_name << ": " 
      << d_stored_message << std::endl;

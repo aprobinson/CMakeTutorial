@@ -16,13 +16,14 @@ ENFORCE_OUT_OF_SOURCE_BUILD()
 # Add MPI support if requested
 IF(${${PROJECT_NAME}_ENABLE_MPI})
   SET(HAVE_${PROJECT_NAME}_MPI "1")
+  SET(CMAKEDEFINE \#cmakedefine)
   ENABLE_MPI_SUPPORT()
-ELSE(${${PROJECT_NAME}_ENABLE_MPI})
-  SET(HAVE_${PROJECT_NAME}_MPI "0")
-ENDIF(${${PROJECT_NAME}_ENABLE_MPI})
+ENDIF()
 
 # Parse the MPI configure file so that it can be used in our source files
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/mpi_config.hpp.in
+  ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_mpi_config.hpp.in)
+CONFIGURE_FILE(${CMAKE_BINARY_DIR}/${PROJECT_NAME}_mpi_config.hpp.in
   ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_mpi_config.hpp)
 
 # Add Design-by-Contract support if requested
@@ -30,7 +31,7 @@ IF(${${PROJECT_NAME}_ENABLE_DBC})
   SET(HAVE_${PROJECT_NAME}_DBC "1")
 ELSE(${${PROJECT_NAME}_ENABLE_DBC})
   SET(HAVE_${PROJECT_NAME}_DBC "0")
-ENDIF(${${PROJECT_NAME}_ENABLE_DBC})
+ENDIF()
 
 # Parse the DBC configure file so that is can be used in our source files
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/dbc_config.hpp.in
@@ -44,4 +45,6 @@ ENABLE_TESTING()
 
 # Set up the project directory heirarchy
 ADD_SUBDIRECTORY(src)
+INCLUDE_DIRECTORIES(src)
+
 ADD_SUBDIRECTORY(test)

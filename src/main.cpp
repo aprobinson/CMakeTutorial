@@ -22,7 +22,7 @@ int main( int argc, char* argv[] )
   int rank = 0;
   int size = 1;
 
-#if HAVE_HelloWorld_MPI
+#ifdef HAVE_HelloWorld_MPI
   MPI_Init(&argc,&argv);
   MPI_Comm_size(MPI_COMM_WORLD,&size);
   MPI_Comm_rank(MPI_COMM_WORLD,&rank);
@@ -44,9 +44,9 @@ int main( int argc, char* argv[] )
   HelloWorld::Message my_message( my_name, my_recipient, my_message_contents);
 
   // Send my message
-  std::cout << my_message << std::endl;	
+  std::cout << my_message;	
 
-#if HAVE_HellowWorld_MPI
+#ifdef HAVE_HelloWorld_MPI
   MPI_Finalize();
 #endif
   

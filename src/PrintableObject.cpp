@@ -13,27 +13,23 @@
 namespace HelloWorld{
 
 // Constructor
-PrintableObject::PrintableObject( const std::string &label = "PrintableObject")
+PrintableObject::PrintableObject( const std::string &label )
   : d_label( label )
 { 
   // Make sure that the object label is valid (at least one character)
   testPrecondition( label.size() > 0 );
 }
 
-// Default print method for placing the printable object in an output stream
-PrintableObject::print( std::ostream& os ) const
-{ 
-  os << d_label << std:endl; 
+// Get the object label
+std::string PrintableObject::getLabel() const
+{
+  return d_label;
 }
 
-// Stream operator for printing all printable objects
-inline std::ostream& operator<<( std::ostream &os,
-				 const HelloWorld::PrintableObject &obj )
-{
-  os << obj.getLabel() << std::endl;
-  obj.print( os );
-
-  return os;
+// Default print method for placing the printable object in an output stream
+void PrintableObject::print( std::ostream& os ) const
+{ 
+  os << d_label << std::endl; 
 }
 
 } // end HelloWorld namespace

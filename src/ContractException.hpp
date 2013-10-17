@@ -10,14 +10,15 @@
 #define CONTRACT_EXCEPTION_HPP
 
 // Std Lib Includes
-#include <exception>
+#include <stdexcept>
 #include <string>
 #include <sstream>
 
-// FACEMC Includes
-#include "HelloWorld_dbc_config.hpp"
+// HelloWorld Includes
+//#include "HelloWorld_dbc_config.hpp"
 
-/*! \defgroup contract_exceptions_macros Design-By-Contract Exceptions and Macros
+/*! \defgroup contract_exceptions_macros Design-By-Contract Exceptions and 
+ *  Macros
  *
  * Design-By-Contract is a powerful way to ensure that certain function
  * preconditions and postconditions are explicit. When Design-By-Contract
@@ -42,7 +43,7 @@ class ContractException : public std::logic_error
 {
 public:
   ContractException( const std::string &msg )
-    : std::logic_error( msg )
+  : std::logic_error( msg )
   { /* ... */ }
   
   virtual ~ContractException() throw()
@@ -62,23 +63,12 @@ public:
  * builds. They can be activated by setting the following in a CMake
  * configure:
  *
- * -D FACEMC_ENABLE_DBC:BOOL=ON
+ * -D HelloWorld_ENABLE_DBC:BOOL=ON
  *
  * By default, DBC is deactivated. Although they will require additional
  * computational overhead, these checks provide a mechanism for veryifing
- * library input arguments. Note that the bounds-checking functionality used
- * within FACEMC is only provided by a debug build.
- *
- * In addition, remember is provided to store values used only for DBC
- * checks and no other place in executed code.
- *
- * Developers should refer to the \ref contract_exceptions_macros page for more
- * on how this functionality is implemented.
- *
- * Design-by-Contract functionality can also be expanded to compile-time
- * preconditions which can be very useful in templated code where the
- * the template parameter must have certain properties for the desired behavior
- * to be guaranteed. This functionality will always be turned on.
+ * library input arguments. In addition, remember is provided to store values 
+ * used only for DBC checks and no other place in executed code.
  */
 
 #define TEST_FOR_EXCEPTION( exception_test, Exception, msg ) \
@@ -103,7 +93,7 @@ public:
  */
 #define testPrecondition(c) \
   TEST_FOR_EXCEPTION( !(c),						\
-		      FACEMC::ContractException,			\
+		      HelloWorld::ContractException,			\
 		      "Precondition exception" << std::endl ) 
 
 /*! Test a function postcondition
@@ -111,7 +101,7 @@ public:
  */
 #define testPostcondition(c) \
   TEST_FOR_EXCEPTION( !(c),						\
-		      FACEMC::ContractException,			\
+		      HelloWorld::ContractException,			\
 		      "Postcondition exception" << std::endl ) 
 
 /*! Test a function invariant
@@ -119,7 +109,7 @@ public:
  */
 #define testInvariant(c) \
   TEST_FOR_EXCEPTION( !(c),						\
-		      FACEMC::ContractException,			\
+		      HelloWorld::ContractException,			\
 		      "Invariant exception" << std::endl )
 
 /*! Remember a variable that is needed for testing DBC conditions

@@ -13,7 +13,7 @@
 #include "HelloWorld_mpi_config.hpp"
 
 // If MPI has been enabled, include the necessary mpi files
-#if HAVE_HelloWorld_MPI
+#ifdef HAVE_HelloWorld_MPI
 
 #include "mpi.h"
 

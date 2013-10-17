@@ -22,25 +22,17 @@ class PrintableObject
 public:
   
   //! Constructor
-  PrintableObject( const std::string &label = "PrintableObject" )
-    : d_label( label )
-  { /* ... */ }
+  PrintableObject( const std::string &label = "PrintableObject" );
 
   //! Destructor
   virtual ~PrintableObject()
   { /* ... */ }
 
+  //! Get the object label
+  std::string getLabel() const;
+
   //! Print method for placing the printable object in an output stream.
-  virtual void print( std::ostream &os ) const
-  { os << d_label << std::endl; }
-
-  //! Set the printable object label
-  void setLabel( const std::string &label )
-  { d_label = label; }
-
-  //! Get the printable object label
-  std::string getLabel() const
-  { return d_label; }
+  virtual void print( std::ostream &os ) const;
 
 private:
   
@@ -50,7 +42,13 @@ private:
 
 //! Stream operator for printing all printable objects
 inline std::ostream& operator<<( std::ostream &os, 
-				 const HelloWorld::PrintableObject &obj );
+				 const HelloWorld::PrintableObject &obj )
+{
+  os << obj.getLabel() << std::endl;
+  obj.print( os );
+
+  return os;
+}
 
 } // end HelloWorld namespace
 

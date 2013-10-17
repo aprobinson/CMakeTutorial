@@ -13,6 +13,9 @@
 #include <string>
 #include <iostream>
 
+// HelloWorld Includes
+#include "PrintableObject.hpp"
+
 namespace HelloWorld{
 
 //! Message class stores a message and can be printed through std::iostream.
@@ -40,7 +43,7 @@ public:
   void changeMessageContents( const std::string& new_message );
 
   //! Print method (overridden PrintableObject print method)
-  void print( std::ostream& os );
+  void print( std::ostream& os ) const;
 
 private:
 

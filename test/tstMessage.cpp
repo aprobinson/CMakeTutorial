@@ -41,12 +41,13 @@ BOOST_AUTO_TEST_CASE( Message_print )
   HelloWorld::Message test_message( sender, recipient, message_contents );
 
   // Print the test_message
-  std::sstream output_message;
+  std::stringstream output_message;
   test_message.print( output_message );
 
   // Reference message
-  std::sstring ref_output_message << sender << "->" << recipient << ": "
-				  << message_contents << std::endl;
+  std::stringstream ref_output_message;
+  ref_output_message << sender << "->" << recipient << ": "
+		     << message_contents << std::endl;
   
   BOOST_CHECK_EQUAL( output_message.str(), ref_output_message.str() );
 }
