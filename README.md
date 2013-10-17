@@ -45,7 +45,7 @@ Typical Workflow:
 8.) If MPI support has been turned on type: mpiexec -n x main
     where x is the number of processes to use
 
--NOTE: After changing configure options and rerunning the configure script
+     -NOTE: After changing configure options and rerunning the configure script
       it is often a good idea to type make clean before rebuilding the
       system.
 
