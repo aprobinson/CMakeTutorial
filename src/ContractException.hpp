@@ -15,7 +15,7 @@
 #include <sstream>
 
 // HelloWorld Includes
-//#include "HelloWorld_dbc_config.hpp"
+#include "HelloWorld_dbc_config.hpp"
 
 /*! \defgroup contract_exceptions_macros Design-By-Contract Exceptions and 
  *  Macros
