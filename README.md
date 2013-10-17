@@ -23,6 +23,7 @@ can be found at http://www.cmake.org/cmake/help/v2.8.12/cmake.html.
 //---------------------------------------------------------------------------//
 
 Typical Workflow:
+
 1.) Copy configure.sh file to a new directory
 
 2.) Modify HELLOWORLD_PATH variable in configure.sh file so that it contains
@@ -36,7 +37,7 @@ Typical Workflow:
 
 6.) If all unit tests pass type: make install
 
-    -Note: the default install_prefix_path is the root directory of the 
+    -Note: the default install_prefix_path is the parent directory of the 
            directory where the configure.sh script executed
 
 7.) Go to the bin directory (../bin) to use the executable created (main)
