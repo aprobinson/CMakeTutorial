@@ -21,6 +21,7 @@ commands (many of which are found in the file contained in the cmake directory)
 can be found at http://www.cmake.org/cmake/help/v2.8.12/cmake.html. 
 
 //---------------------------------------------------------------------------//
+
 Typical Workflow:
 1.) Copy configure.sh file to a new directory
 2.) Modify HELLOWORLD_PATH variable in configure.sh file so that it contains
@@ -40,6 +41,7 @@ NOTE: After changing configure options and rerunning the configure script
       system.
 
 //---------------------------------------------------------------------------//
+
 Example directory structure for build:
 root_dir -> build, bin, include, CMakeTutorial
 
