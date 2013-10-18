@@ -43,7 +43,7 @@ INCLUDE_DIRECTORIES(${CMAKE_BINARY_DIR})
 # Enable testing through CTest
 ENABLE_TESTING()
 
-# Set up the project directory heirarchy
+# Set up the project directory hierarchy
 ADD_SUBDIRECTORY(src)
 INCLUDE_DIRECTORIES(src)
 
