@@ -57,4 +57,4 @@ root_dir -> build, bin, include, CMakeTutorial
 
 The configure.sh file will be copied to the build directory. The bin and
 include directories need not be created manually - CMake will create them
-if the do not exist when make install is called from the build directory.
+if they do not exist when make install is called from the build directory.
