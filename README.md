@@ -17,7 +17,7 @@ create a verbose make file, whether or not to enable Design-by-Contract,
 and whether or not to enable MPI. I encourage you to play with these options
 to see how they change the behavior of cmake, the makefile created by cmake, 
 and the system. A description of some of the more advanced cmake
-commands (many of which are found in the file contained in the cmake directory)
+commands (some of which are present in the files contained in the cmake directory)
 can be found at http://www.cmake.org/cmake/help/v2.8.12/cmake.html. 
 
 -------------------------------------------------------------------------------
