@@ -22,7 +22,7 @@ class PrintableObject
 public:
   
   //! Constructor
-  PrintableObject( const std::string &label = "PrintableObject" );
+  explicit PrintableObject( const std::string &label = "PrintableObject" );
 
   //! Destructor
   virtual ~PrintableObject()
