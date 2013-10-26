@@ -16,11 +16,11 @@ ENFORCE_OUT_OF_SOURCE_BUILD()
 # Add MPI support if requested
 IF(${${PROJECT_NAME}_ENABLE_MPI})
   SET(HAVE_${PROJECT_NAME}_MPI "1")
-  SET(CMAKEDEFINE \#cmakedefine)
   ENABLE_MPI_SUPPORT()
 ENDIF()
 
 # Parse the MPI configure file so that it can be used in our source files
+SET(CMAKEDEFINE \#cmakedefine)
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/mpi_config.hpp.in
   ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_mpi_config.hpp.in)
 CONFIGURE_FILE(${CMAKE_BINARY_DIR}/${PROJECT_NAME}_mpi_config.hpp.in
