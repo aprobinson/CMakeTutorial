@@ -1,5 +1,13 @@
 INCLUDE_DIRECTORIES(${${PROJECT_NAME}_INCLUDE_DIRS})
 
+FIND_PACKAGE(
+  Boost 
+  COMPONENTS unit_test_framework 
+  REQUIRED
+  )
+
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
+
 ADD_EXECUTABLE(
   tstContractException 
   tstContractException.cpp
@@ -15,7 +23,10 @@ ADD_EXECUTABLE(
   tstMessage.cpp
   )
 
-TARGET_LINK_LIBRARIES(tstMessage dl ${PROJECT_NAME})
+TARGET_LINK_LIBRARIES(
+	tstMessage dl 
+	${PROJECT_NAME} 
+	)
 
 ADD_TEST(
   Message_test 
