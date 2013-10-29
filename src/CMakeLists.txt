@@ -1,17 +1,25 @@
-SET(HEADERS
+
+SET(
+  HEADERS
   PrintableObject.hpp
   Message.hpp
   ContractException.hpp
   Comm.hpp
-  ${HEADERS})
+  ${HEADERS}
+  )
 
+# SET(
+#   SRC
+#   PrintableObject.cpp
+#   Message.cpp 
+#   )
+  
 SET(TARGETS
   main
   ${TARGETS})
   
 IF(CMAKE_VERBOSE_CONFIGURE)
   MESSAGE("HEADERS = ${HEADERS}")
-  MESSAGE("TARGETS = ${TARGETS}")
 ENDIF()
 
 ADD_EXECUTABLE( main
