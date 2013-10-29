@@ -46,6 +46,8 @@ def install_proj(args):
             cmake_cmd += ['-DHelloWorld_ENABLE_MPI:BOOL=ON']
         else:
             cmake_cmd += ['-DHelloWorld_ENABLE_MPI:BOOL=OFF']
+        if args.debug:
+            cmake_cmd += ['-DCMAKE_BUILD_TYPE:STRING=Debug']
         cmake_cmd += [os.path.abspath(root_dir)]
         check_windows_cmake(cmake_cmd)
         rtn = subprocess.check_call(cmake_cmd, cwd=args.build_dir, 
@@ -56,7 +58,7 @@ def install_proj(args):
         make_cmd += ['-j' + str(args.threads)]
     rtn = subprocess.check_call(make_cmd, cwd=args.build_dir, shell=(os.name=='nt'))
 
-    if not args.no_test:
+    if args.test:
         make_cmd = ['make', 'test']
         rtn = subprocess.check_call(make_cmd, cwd=args.build_dir, shell=(os.name=='nt'))
     
@@ -79,8 +81,8 @@ def main():
     threads = "the number of threads to use in the make step"
     parser.add_argument('-j', '--threads', type=int, help=threads)
 
-    install = "the relative path to the installation directory"
-    parser.add_argument('--prefix', help=install, default=localdir)
+    prefix = "the relative path to the installation directory"
+    parser.add_argument('--prefix', help=prefix, default=localdir)
 
     dbc = "disable design by contract"
     parser.add_argument('--no-dbc', action='store_true', help=dbc)
@@ -88,8 +90,11 @@ def main():
     mpi = "disable mpi"
     parser.add_argument('--no-mpi', action='store_true', help=mpi)
 
-    test = "don't testing"
-    parser.add_argument('--no-test', action='store_true', help=test)
+    debug = "build in debug mode"
+    parser.add_argument('--debug', action='store_true', help=debug)
+
+    test = "run tests after building"
+    parser.add_argument('--test', action='store_true', help=test)
 
     install = "don't install after building"
     parser.add_argument('--no-install', action='store_true', help=install)
