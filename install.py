@@ -40,8 +40,12 @@ def install_proj(args):
             cmake_cmd += ['-DCMAKE_INSTALL_PREFIX=' + absexpanduser(args.prefix)]
         if not args.no_dbc:
             cmake_cmd += ['-DHelloWorld_ENABLE_DBC:BOOL=ON']
+        else:
+            cmake_cmd += ['-DHelloWorld_ENABLE_DBC:BOOL=OFF']
         if not args.no_mpi:
             cmake_cmd += ['-DHelloWorld_ENABLE_MPI:BOOL=ON']
+        else:
+            cmake_cmd += ['-DHelloWorld_ENABLE_MPI:BOOL=OFF']
         cmake_cmd += [os.path.abspath(root_dir)]
         check_windows_cmake(cmake_cmd)
         rtn = subprocess.check_call(cmake_cmd, cwd=args.build_dir, 
