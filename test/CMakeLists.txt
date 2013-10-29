@@ -1,3 +1,5 @@
+INCLUDE_DIRECTORIES(${${PROJECT_NAME}_INCLUDE_DIRS})
+
 SET(SRC ${CMAKE_SOURCE_DIR}/src)
 
 ADD_EXECUTABLE(tstContractException tstContractException.cpp)
