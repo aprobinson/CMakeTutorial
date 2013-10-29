@@ -64,7 +64,7 @@ def main():
     parser.add_argument('--build_dir', help=build_dir, default='build')
 
     replace = 'whether or not to remove the build directory if it exists'
-    parser.add_argument('--replace', type=bool, help=replace, default=False)
+    parser.add_argument('--replace', type=bool, help=replace, default=True)
 
     threads = "the number of threads to use in the make step"
     parser.add_argument('-j', '--threads', type=int, help=threads)
