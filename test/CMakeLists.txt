@@ -6,17 +6,12 @@ FIND_PACKAGE(
   REQUIRED
   )
 
-SET(
-  TST_LIBS ${TST_LIBS}
-  ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
-  )  
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 
 ADD_EXECUTABLE(
   tstContractException 
   tstContractException.cpp
   )
-
-TARGET_LINK_LIBRARIES(tstContractException dl ${TST_LIBS})
 
 ADD_TEST(
   ContractException_test 
@@ -28,7 +23,10 @@ ADD_EXECUTABLE(
   tstMessage.cpp
   )
 
-TARGET_LINK_LIBRARIES(tstMessage dl ${PROJECT_NAME} ${TST_LIBS})
+TARGET_LINK_LIBRARIES(
+	tstMessage dl 
+	${PROJECT_NAME} 
+	)
 
 ADD_TEST(
   Message_test 
