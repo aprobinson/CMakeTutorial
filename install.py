@@ -38,9 +38,9 @@ def install_proj(args):
         cmake_cmd = ['cmake']
         if args.prefix:
             cmake_cmd += ['-DCMAKE_INSTALL_PREFIX=' + absexpanduser(args.prefix)]
-        if args.dbc:
+        if not args.no_dbc:
             cmake_cmd += ['-DHelloWorld_ENABLE_DBC:BOOL=ON']
-        if args.mpi:
+        if not args.no_mpi:
             cmake_cmd += ['-DHelloWorld_ENABLE_MPI:BOOL=ON']
         cmake_cmd += [os.path.abspath(root_dir)]
         check_windows_cmake(cmake_cmd)
@@ -50,8 +50,15 @@ def install_proj(args):
     make_cmd = ['make']
     if args.threads:
         make_cmd += ['-j' + str(args.threads)]
-    make_cmd += ['install']
     rtn = subprocess.check_call(make_cmd, cwd=args.build_dir, shell=(os.name=='nt'))
+
+    if not args.no_test:
+        make_cmd = ['make', 'test']
+        rtn = subprocess.check_call(make_cmd, cwd=args.build_dir, shell=(os.name=='nt'))
+    
+    if not args.no_install:
+        make_cmd = ['make', 'install']
+        rtn = subprocess.check_call(make_cmd, cwd=args.build_dir, shell=(os.name=='nt'))
 
 def main():
     localdir = absexpanduser('~/.local')
@@ -63,7 +70,7 @@ def main():
     parser.add_argument('--build_dir', help=build_dir, default='build')
 
     replace = 'whether or not to remove the build directory if it exists'
-    parser.add_argument('--replace', type=bool, help=replace, default=True)
+    parser.add_argument('--replace', type=bool, help=replace, default=False)
 
     threads = "the number of threads to use in the make step"
     parser.add_argument('-j', '--threads', type=int, help=threads)
@@ -71,11 +78,17 @@ def main():
     install = "the relative path to the installation directory"
     parser.add_argument('--prefix', help=install, default=localdir)
 
-    dbc = "enable design by contract"
-    parser.add_argument('--dbc', type=bool, help=dbc, default=True)
+    dbc = "disable design by contract"
+    parser.add_argument('--no-dbc', action='store_true', help=dbc)
 
-    mpi = "enable mpi"
-    parser.add_argument('--mpi', type=bool, help=mpi, default=True)
+    mpi = "disable mpi"
+    parser.add_argument('--no-mpi', action='store_true', help=mpi)
+
+    test = "don't testing"
+    parser.add_argument('--no-test', action='store_true', help=test)
+
+    install = "don't install after building"
+    parser.add_argument('--no-install', action='store_true', help=install)
 
     install_proj(parser.parse_args())
 
