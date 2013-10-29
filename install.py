@@ -56,8 +56,7 @@ def install_proj(args):
 def main():
     localdir = absexpanduser('~/.local')
 
-    description = "A Cyclus installation helper script. "+\
-        "For more information, please see cyclus.github.com." 
+    description = "An installation helper script."
     parser = ap.ArgumentParser(description=description)
 
     build_dir = 'where to place the build directory'
