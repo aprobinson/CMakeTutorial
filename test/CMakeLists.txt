@@ -2,7 +2,6 @@ INCLUDE_DIRECTORIES(${${PROJECT_NAME}_INCLUDE_DIRS})
 
 FIND_PACKAGE(
   Boost 
-  COMPONENTS unit_test_framework 
   REQUIRED
   )
 
