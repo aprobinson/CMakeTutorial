@@ -2,16 +2,17 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
 
 # set project directories
-SET( PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR} )
-SET( PROJ_CLI_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cli )
-SET( PROJ_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src )
-SET( PROJ_TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/test )
+SET( PROJECT_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR} )
+SET( PROJ_CLI_DIR ${PROJECT_SRC_DIR}/cli )
+SET( PROJ_SRC_DIR ${PROJECT_SRC_DIR}/src )
+SET( PROJ_TEST_DIR ${PROJECT_SRC_DIR}/test )
+SET( PROJ_CMAKE_DIR ${PROJECT_SRC_DIR}/cmake )
 
 # Tell CMake where the modules are
 SET( 
   CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} 
   "${CMAKE_DIR}/share/cmake-2.8/Modules"
-  ${PROJECT_SOURCE_DIR}/cmake
+  ${PROJ_CMAKE_DIR}
   )
 
 # Define the project name, no need to fully spell it out because it's now in the
@@ -76,3 +77,14 @@ ADD_SUBDIRECTORY(${PROJ_CLI_DIR})
 # Enable testing through CTest
 ENABLE_TESTING()
 ADD_SUBDIRECTORY(${PROJ_TEST_DIR})
+
+CONFIGURE_FILE(
+    "${PROJ_CMAKE_DIR}/cmake_uninstall.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+    IMMEDIATE @ONLY
+    )
+
+ADD_CUSTOM_TARGET(
+  uninstall
+  COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake
+  )
