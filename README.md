@@ -14,7 +14,7 @@ Ok, sweet, we have a `--no-mpi` flag. So we *can* make and run main with:
 
 ```
 $ python install.py --no-mpi
-$ ./build/src/main
+$ ./build/src/HelloWorld
 ```
 
 Note that you may have to include the --replace flag to build from scratch.
