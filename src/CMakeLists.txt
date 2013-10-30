@@ -11,14 +11,14 @@ IF(CMAKE_VERBOSE_CONFIGURE)
 ENDIF()
 
 ADD_EXECUTABLE(
-  HelloWorld
+  main
   main.cpp
   Message.cpp
   PrintableObject.cpp
   )
 
 INSTALL(
-  TARGETS HelloWorld
+  TARGETS main
   RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
   )
 
