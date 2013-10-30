@@ -7,16 +7,23 @@ step2, step3 and the master branch. The step0 branch is simply the HelloWorld
 project before the build system has been set up. The step1 branch has a very
 simple CMake build system. In it one can build the main executable. However
 trying to build it with MPI will result in linker errors because no library
-linking is done. In the step2 branch the build system is set up to link the
-main executable with the MPI libraries if MPI has been enabled by the user. 
-In the step3 branch testing support is added and several unit tests are added
-to the build system. Finally, the master branch adds in all of the extra bells
-and whistles. The main executable source is moved from the core (src) 
-directory to a new directory called cli. The build system is set up to build
-a library from the core source files of the project. The main file is then
-built and linked with the core project library. All unit tests are also build
-and linked with the core project library. As projects get larger and more
-complex, this build system setup can be very useful.
+linking is done. In the step2 branch the build system is set up to link the main
+executable with the MPI libraries if MPI has been enabled by the user.  In the
+step3 branch testing support is added and several unit tests are added to the
+build system. Finally, the master branch adds in all of the extra bells and
+whistles. The main executable source is moved from the core (src) directory to a
+new directory called cli. The build system is set up to build a library from the
+core source files of the project. The main file is then built and linked with
+the core project library. All unit tests are also built and linked with the core
+project library. As projects get larger and more complex, this build system
+setup can be very useful. An uninstall target was also added, which makes
+cleaning up an installed project very easy. You can try it with
+
+```
+python install.py 
+cd build
+make uninstall
+```
 
 HelloWorld Configuration Options:
 -----------
@@ -38,7 +45,9 @@ Running CMake:
 
 To configure the HelloWorld project the following command can be run:
 
+```
 cmake -D CMAKE_INSTALL_PREFIX:PATH=path_a -D CMAKE_BUILD_TYPE:STRING=option_a -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON -D HelloWorld_ENABLE_DBC:BOOL=option_b -D HelloWorld_ENABLE_MPI:BOOL=option_c path_b
+```
 
 <ul>
  <li> path_a = Absolute path to directory where binaries, headers and 
@@ -64,7 +73,9 @@ Running main executable in parallel:
 Whether or not the main executable is built using MPI it is always valid to run
 it using ./main. To run it in parallel, the following command must be used:
 
+```
 mpiexec -n p main
+```
 
 The option p is the number of parallel processes to initiate.
 
