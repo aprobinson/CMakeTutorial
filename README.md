@@ -20,9 +20,9 @@ setup can be very useful. An uninstall target was also added, which makes
 cleaning up an installed project very easy. You can try it with
 
 ```
-$> python install.py 
-$> cd build
-$> make uninstall
+$ python install.py 
+$ cd build
+$ make uninstall
 ```
 
 HelloWorld Configuration Options:
@@ -46,7 +46,7 @@ Running CMake:
 To configure the HelloWorld project the following command can be run:
 
 ```
-$> cmake -D CMAKE_INSTALL_PREFIX:PATH=path_a -D CMAKE_BUILD_TYPE:STRING=option_a -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON -D HelloWorld_ENABLE_DBC:BOOL=option_b -D HelloWorld_ENABLE_MPI:BOOL=option_c path_b
+$ cmake -D CMAKE_INSTALL_PREFIX:PATH=path_a -D CMAKE_BUILD_TYPE:STRING=option_a -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON -D HelloWorld_ENABLE_DBC:BOOL=option_b -D HelloWorld_ENABLE_MPI:BOOL=option_c path_b
 ```
 
 * path_a = Absolute path to directory where binaries, headers and 
@@ -70,7 +70,7 @@ Whether or not the main executable is built using MPI it is always valid to run
 it using ./main. To run it in parallel, the following command must be used:
 
 ```
-$> mpiexec -n p main
+$ mpiexec -n p main
 ```
 
 The option p is the number of parallel processes to initiate.
