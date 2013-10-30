@@ -60,7 +60,7 @@ def install_proj(args):
 
     if args.test:
         make_cmd = ['make', 'test']
-        rtn = subprocess.check_call(make_cmd, cwd=args.build_dir, shell=(os.name=='nt'))
+        rtn = subprocess.check_call(make_cmd, cwd=args.build_dir+"/test", shell=(os.name=='nt'))
     
     if not args.no_install:
         make_cmd = ['make', 'install']

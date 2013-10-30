@@ -48,6 +48,11 @@ CONFIGURE_FILE(
 
 ##---------------------------------------------------------------------------##
 
+# Enable testing through CTest
+ENABLE_TESTING()
+
 # Set up the project directory hierarchy
 ADD_SUBDIRECTORY(src)
+INCLUDE_DIRECTORIES(src)
 
+ADD_SUBDIRECTORY(test)
