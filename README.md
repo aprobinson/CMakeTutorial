@@ -1,9 +1,6 @@
 CMakeTutorial 
 =============
 
-A simple CMake build system example.
--------------
-
 This tutorial is designed to show how one can set up a build system for a
 project using CMake. There are five branches the in this repo: step0, step1,
 step2, step3 and the master branch. The step0 branch is simply the HelloWorld
@@ -22,7 +19,7 @@ and linked with the core project library. As projects get larger and more
 complex, this build system setup can be very useful.
 
 HelloWorld Configuration Options:
-===========
+-----------
 
 Several options can be passed to the build system to change the behavior of the
 project. The first option is whether the build is a debug build or a release 
