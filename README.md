@@ -42,17 +42,17 @@ To configure the HelloWorld project the following command can be run:
 
 cmake -D CMAKE_INSTALL_PREFIX:PATH=path_a -D CMAKE_BUILD_TYPE:STRING=option_a -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON -D HelloWorld_ENABLE_DBC:BOOL=option_b -D HelloWorld_ENABLE_MPI:BOOL=option_c path_b
 
-<ol>
+<ul>
  <li> path_a = Absolute path to directory where binaries, headers and 
                libraries will be installed.
  <li> path_b = Absolute path to the CMakeTutorial directory
-</ol>
+</ul>
 
-<ol>
+<ul>
  <li> option_a = RELEASE or DEBUG
  <li> option_b = ON or OFF
  <li> option_c = ON or OFF
-<ol>
+</ul>
 
 Using the install.py script one never needs to actually run this command. The 
 script simplifies the configuration process by abstracting configuration 
