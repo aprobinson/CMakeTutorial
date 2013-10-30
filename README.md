@@ -25,6 +25,12 @@ $ cd build
 $ make uninstall
 ```
 
+Note that in the master branch, the build directory mirrors the to-be-installed
+directory, i.e.:
+
+* executables are built in build/bin
+* libraries are build in build/lib
+
 HelloWorld Configuration Options:
 -----------
 
@@ -59,7 +65,7 @@ $ cmake -D CMAKE_INSTALL_PREFIX:PATH=path_a -D CMAKE_BUILD_TYPE:STRING=option_a 
 
 Using the install.py script one never needs to actually run this command. The 
 script simplifies the configuration process by abstracting configuration 
-options to simple flags that one can pass. Type ./install.py -h to get a 
+options to simple flags that one can pass. Type `./install.py -h` to get a 
 description of all the flags that one can pass. In addition the script provides
 a valid build and install prefix in case no flags are passed. 
 
@@ -70,7 +76,8 @@ Whether or not the main executable is built using MPI it is always valid to run
 it using ./main. To run it in parallel, the following command must be used:
 
 ```
-$ mpiexec -n p main
+$ python install.py --replace --no-install
+$ mpiexec -n p ./build/bin/main
 ```
 
 The option p is the number of parallel processes to initiate.
