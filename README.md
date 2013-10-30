@@ -8,13 +8,13 @@ errors because the build system is not yet set up to link against external
 libraries. 
 
 An install script was also added, which helps out with the configuration and
-build process. Checkout `python install.py --help`.
+build process. Try `python install.py --help`.
 
 Ok, sweet, we have a `--no-mpi` flag. So we *can* make and run main with:
 
 ```
-python install.py --no-mpi
-./build/src/main
+$ python install.py --no-mpi
+$ ./build/src/main
 ```
 
 Note that you may have to include the --replace flag to build from scratch.
