@@ -1,0 +1,4 @@
+// Define if we want to use Design-by-Contract functionality.
+// NOTE: If the CMake variable HAVE_${PROJECT_NAME}_DBC is not defined the
+//       macro HAVE_${PROJECT_NAME}_DBC will still be set. 
+#define HAVE_${PROJECT_NAME}_DBC ${HAVE_${PROJECT_NAME}_DBC}
