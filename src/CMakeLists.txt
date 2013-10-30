@@ -11,7 +11,7 @@ IF(CMAKE_VERBOSE_CONFIGURE)
 ENDIF()
 
 ADD_EXECUTABLE(
-  HelloWorld
+  main
   main.cpp
   Message.cpp
   PrintableObject.cpp
@@ -22,7 +22,7 @@ IF(${HelloWorld_ENABLE_MPI})
 ENDIF()
 
 INSTALL(
-  TARGETS HelloWorld
+  TARGETS main
   RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
   )
 
