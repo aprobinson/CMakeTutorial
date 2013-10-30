@@ -33,8 +33,8 @@ Unless the cmake command is being run directly by the user, these options
 never need to be chosen in this way. The provided install.py script allows
 one to configure the system in a much easier way. 
 
-===========
 Running CMake:
+-------------
 
 To configure the HelloWorld project the following command can be run:
 
@@ -58,8 +58,8 @@ options to simple flags that one can pass. Type ./install.py -h to get a
 description of all the flags that one can pass. In addition the script provides
 a valid build and install prefix in case no flags are passed. 
 
-=========
 Running main executable in parallel:
+---------
 
 Whether or not the main executable is build using MPI or not it is always
 valid to run it using ./main. To run it in parallel, the following command
@@ -69,8 +69,8 @@ mpiexec -n p main
 
 The option p is the number of parallel processes to initiate.
 
-=========
 CMake Documentation:
+---------
 
 The master branch of this repo uses some of the more advanced CMake commands.
 A complete description of all of the CMake commands can be found at http://www.cmake.org/cmake/help/v2.8.12/cmake.html. 
