@@ -10,7 +10,7 @@
 #define COMM_HPP
 
 // Include the MPI config file
-#include "HelloWorld_mpi_config.hpp"
+// #include "HelloWorld_mpi_config.hpp"
 
 // If MPI has been enabled, include the necessary mpi files
 #ifdef HAVE_HelloWorld_MPI
