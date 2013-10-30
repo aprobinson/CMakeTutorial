@@ -8,7 +8,7 @@ following command:
 
 ```
 $ python install.py --replace
-$ mpiexec -n p ./build/src/HelloWorld
+$ mpiexec -n p ./build/src/main
 ```
 
 The option p is the number of parallel processes to initiate. 
