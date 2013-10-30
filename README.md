@@ -21,8 +21,8 @@ built and linked with the core project library. All unit tests are also build
 and linked with the core project library. As projects get larger and more
 complex, this build system setup can be very useful.
 
-===========
 HelloWorld Configuration Options:
+===========
 
 Several options can be passed to the build system to change the behavior of the
 project. The first option is whether the build is a debug build or a release 
