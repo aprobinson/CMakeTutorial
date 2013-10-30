@@ -61,9 +61,8 @@ a valid build and install prefix in case no flags are passed.
 Running main executable in parallel:
 ---------
 
-Whether or not the main executable is build using MPI or not it is always
-valid to run it using ./main. To run it in parallel, the following command
-must be used:
+Whether or not the main executable is built using MPI it is always valid to run
+it using ./main. To run it in parallel, the following command must be used:
 
 mpiexec -n p main
 
