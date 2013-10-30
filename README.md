@@ -6,7 +6,10 @@ MPI libraries when a user enables MPI (configuration option). After building
 the project with MPI enabled, the executable can be run in parallel using the
 following command:
 
-mpiexec -n p main
+```
+$ python install.py --replace
+$ mpiexec -n p ./build/src/HelloWorld
+```
 
 The option p is the number of parallel processes to initiate. 
 
