@@ -1,43 +1,14 @@
+# Define the project name
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/ProjectName.cmake)
+
+# Define the project version
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/Version.cmake)
+
 # Define the minimum required version of CMake
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
 
-# set project directories
-SET( PROJECT_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR} )
-SET( PROJ_CLI_DIR ${PROJECT_SRC_DIR}/cli )
-SET( PROJ_SRC_DIR ${PROJECT_SRC_DIR}/src )
-SET( PROJ_TEST_DIR ${PROJECT_SRC_DIR}/test )
-SET( PROJ_CMAKE_DIR ${PROJECT_SRC_DIR}/cmake )
-
-# Tell CMake where the modules are
-SET( 
-  CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} 
-  "${CMAKE_DIR}/share/cmake-2.8/Modules"
-  ${PROJ_CMAKE_DIR}
-  )
-
-# Define the project name, no need to fully spell it out because it's now in the
-# CMAKE_MODULE_PATH, which CMAKE queries for its INCLUDEs
-INCLUDE(ProjectName)
-
-# Define the project version
-INCLUDE(Version)
-
 # Include the macros that have been defined for this project
-INCLUDE(Macros)
-
-# This makes all the libraries build as SHARED
-SET(BUILD_SHARED_LIBS true)
-
-# Setup build locations.
-IF(NOT CMAKE_RUNTIME_OUTPUT_DIRECTORY)
-  SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
-endif()
-IF(NOT CMAKE_LIBRARY_OUTPUT_DIRECTORY)
-  SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
-endif()
-
-# Set the runtime install path
-SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/Macros.cmake)
 
 # Enforce an out-of-source build, no one should be building in the src dir!
 ENFORCE_OUT_OF_SOURCE_BUILD()
@@ -55,6 +26,13 @@ CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/mpi_config.hpp.in
 CONFIGURE_FILE(${CMAKE_BINARY_DIR}/${PROJECT_NAME}_mpi_config.hpp.in
   ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_mpi_config.hpp)
 
+# Add the CMAKE_BINARY_DIR to the include path to access config files 
+INCLUDE_DIRECTORIES(${CMAKE_BINARY_DIR})
+
+##---------------------------------------------------------------------------##
+## Ignore this section for now
+##---------------------------------------------------------------------------##
+
 # Add Design-by-Contract support if requested
 IF(${${PROJECT_NAME}_ENABLE_DBC})
   SET(HAVE_${PROJECT_NAME}_DBC "1")
@@ -68,23 +46,8 @@ CONFIGURE_FILE(
   ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_dbc_config.hpp
   )
 
-# Add the CMAKE_BINARY_DIR to the include path to access config files 
-INCLUDE_DIRECTORIES(${CMAKE_BINARY_DIR})
+##---------------------------------------------------------------------------##
 
 # Set up the project directory hierarchy
-ADD_SUBDIRECTORY(${PROJ_SRC_DIR})
-ADD_SUBDIRECTORY(${PROJ_CLI_DIR})
-# Enable testing through CTest
-ENABLE_TESTING()
-ADD_SUBDIRECTORY(${PROJ_TEST_DIR})
+ADD_SUBDIRECTORY(src)
 
-CONFIGURE_FILE(
-    "${PROJ_CMAKE_DIR}/cmake_uninstall.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-    IMMEDIATE @ONLY
-    )
-
-ADD_CUSTOM_TARGET(
-  uninstall
-  COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake
-  )

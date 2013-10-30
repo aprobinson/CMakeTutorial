@@ -22,7 +22,7 @@ can be found at http://www.cmake.org/cmake/help/v2.8.12/cmake.html.
 
 -------------------------------------------------------------------------------
 
-Step-by-step Workflow:
+Typical Workflow:
 
 1.) Copy configure.sh file to a new directory
 
